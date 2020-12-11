@@ -1,6 +1,8 @@
 # UnityNormalSmoothTools
 A small tool for smoothing vertices and put smoothed normal in the vertex color
 
+![20201105225250751.png](https://i.loli.net/2020/12/11/NmUjz8ClnD4dWMq.png)
+
 ```
 ....
 float3 vertNormal = v.vertexColor.rgb * 2 - 1;
