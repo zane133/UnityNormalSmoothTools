@@ -1,5 +1,5 @@
 # UnityNormalSmoothTools
-A small tool for smoothing vertices
+A small tool for smoothing vertices and put smoothed normal in the vertex color
 
 ```
 ....
