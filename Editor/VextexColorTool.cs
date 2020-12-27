@@ -132,7 +132,7 @@ public class VextexColorTool : Editor
         }
 
         //新建一个mesh，将之前mesh的所有信息copy过去
-        Mesh newMesh = new Mesh();
+        Mesh newMesh = Object.Instantiate(mesh) as Mesh;
         newMesh.vertices = mesh.vertices;
         newMesh.triangles = mesh.triangles;
         newMesh.normals = mesh.normals;
