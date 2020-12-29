@@ -13,6 +13,8 @@ float3x3 TtoO = float3x3(
                 v.normal.xyz);
 TtoO = transpose(TtoO);
 vertNormal = mul(TtoO, vertNormal);			
+// 这里最好单位化一下，不然绑定骨骼的时候会出现奇怪的法线偏移
+vertNormal = normalize(vertNormal);
 o.vertex = UnityObjectToClipPos(v.vertex + vertNormal *_OutlineWidth);
 ....
 ```
