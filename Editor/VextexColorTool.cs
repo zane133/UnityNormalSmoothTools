@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -73,34 +73,6 @@ public class VextexColorTool : Editor
             }
         }
 
-        // 遍历三角形
-        //Vector3[] verts = mesh.vertices;
-        //// triangles存的是顶点vertices的索引 
-        //// https://forum.unity.com/threads/how-do-i-get-the-normal-of-each-triangle-in-mesh.101018/
-        //int[] triangles = mesh.triangles;
-
-        //// 计算normal
-        //int triangNum = mesh.triangles.Length / 3;
-        //for (int j = 0; j < triangNum; j++)
-        //{
-        //    Vector3 PN1 = smoothedNormals[triangles[j * 3]];
-        //    Vector3 PN2 = smoothedNormals[triangles[j * 3 + 1]];
-        //    Vector3 PN3 = smoothedNormals[triangles[j * 3 + 2]];
-
-        //    var smoothedNormal = PN1 + PN2 + PN3;
-        //    smoothedNormal.Normalize();
-
-        //    smoothedNormals[triangles[j * 3]] = smoothedNormal;
-        //    smoothedNormals[triangles[j * 3 + 1]] = smoothedNormal;
-        //    smoothedNormals[triangles[j * 3 + 2]] = smoothedNormal;
-        //}
-
-        // 网上找的方法
-
-        //smoothedNormals = NormalSolver.RecalculateNormals(mesh);
-
-
-
         // 新建一个颜色数组把光滑处理后的法线值存入其中
         Color[] meshColors = new Color[smoothedNormals.Length];
         for (int i = 0; i < smoothedNormals.Length; i++)
@@ -133,25 +105,9 @@ public class VextexColorTool : Editor
 
         //新建一个mesh，将之前mesh的所有信息copy过去
         Mesh newMesh = Object.Instantiate(mesh) as Mesh;
-        newMesh.vertices = mesh.vertices;
-        newMesh.triangles = mesh.triangles;
-        newMesh.normals = mesh.normals;
-        newMesh.tangents = mesh.tangents;
-        newMesh.uv = mesh.uv;
-        newMesh.uv2 = mesh.uv2;
-        newMesh.uv3 = mesh.uv3;
-        newMesh.uv4 = mesh.uv4;
-        newMesh.uv5 = mesh.uv5;
-        newMesh.uv6 = mesh.uv6;
-        newMesh.uv7 = mesh.uv7;
-        newMesh.uv8 = mesh.uv8;
         //将新模型的颜色赋值为计算好的颜色
         newMesh.colors = meshColors;
         //newMesh.colors32 = mesh.colors32;
-        newMesh.bounds = mesh.bounds;
-        newMesh.indexFormat = mesh.indexFormat;
-        newMesh.bindposes = mesh.bindposes;
-        newMesh.boneWeights = mesh.boneWeights;
         //将新mesh保存为.asset文件，路径可以是"Assets/Character/Shader/VertexColorTest/TestMesh2.asset"                          
         AssetDatabase.CreateAsset(newMesh, NewMeshPath);
         AssetDatabase.SaveAssets();
